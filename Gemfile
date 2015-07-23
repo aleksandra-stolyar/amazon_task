@@ -40,4 +40,18 @@ gem 'spring',        group: :development
 
 gem 'devise'
 
+gem 'haml'
 
+gem 'pry'
+
+group :development, :test do
+  gem 'faker'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+ 
+group :test do
+  gem 'database_cleaner'
+  gem 'shoulda-matchers'
+  gem "codeclimate-test-reporter"
+end

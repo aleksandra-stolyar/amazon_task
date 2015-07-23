@@ -3,4 +3,8 @@ class OrderItem < ActiveRecord::Base
 
   belongs_to :book
   belongs_to :order
+
+  def price
+    price = book.price * quantity
+  end
 end
