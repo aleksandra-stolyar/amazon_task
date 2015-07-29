@@ -37,12 +37,18 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+gem 'pry'
+
+gem 'twitter-bootstrap-rails'
+gem 'haml'
+gem 'haml-rails', '~> 0.9'
 
 gem 'devise'
+gem 'omniauth-facebook'
+gem 'rails_admin', '~> 0.6.8'
+gem 'cancancan', '~> 1.10'
 
-gem 'haml'
-
-gem 'pry'
+gem 'rails-i18n', '~> 4.0.0'
 
 group :development, :test do
   gem 'faker'
@@ -53,5 +59,5 @@ end
 group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
-  gem "codeclimate-test-reporter"
+  gem 'codeclimate-test-reporter'
 end

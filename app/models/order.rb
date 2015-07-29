@@ -11,19 +11,11 @@ class Order < ActiveRecord::Base
   has_one :billing_address
   has_one :shipping_address
 
-  def total_price
+  def count_total_price
     order_items.inject(0) { |sum,item| sum += item.price * item.quantity }
   end
 
-  def build_from_cart( cart )
-    cart.items.each do |item_id, quantity|
+  
 
-    end
-  end
+
 end
-
-
-# o = Order.new
-# o.build_from_cart( @shop_cart )
-# o.save!
-# @shop_cart.empty!

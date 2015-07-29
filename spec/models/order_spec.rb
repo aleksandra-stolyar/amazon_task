@@ -11,4 +11,10 @@ describe Order, type: :model do
   it {expect(subject).to belong_to :customer}
   it {expect(subject).to belong_to :credit_card}
 
+  describe "#{total_price}" do
+    it "calculates total_price" do
+      
+    end
+  end
+
 end  

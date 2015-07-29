@@ -1,17 +1,21 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :admins
   devise_for :customers
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root "shop_cart#index"
+  root "shop_cart#shop_cart"
 
+  
+  
   resources :shop_cart, only: [:index]
-
+  resources :order, only: [:index]
+  resources :book, only: [:index, :show]
   #TODO: How to make this more pretty?
   post 'shop_cart/add_item' => 'shop_cart#add_item', as: :shop_cart_add_item
-
+  post 'shop_cart/build_order' => 'shop_cart#build_order', as: :shop_cart_build_order
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
