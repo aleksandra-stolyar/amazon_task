@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
+  devise_for :customers, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   devise_for :admins
-  devise_for :customers
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root "shop_cart#shop_cart"
+  root "book#index"
 
-  
-  
   resources :shop_cart, only: [:index]
   resources :order, only: [:index]
   resources :book, only: [:index, :show]

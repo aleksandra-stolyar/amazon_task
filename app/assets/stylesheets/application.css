@@ -13,4 +13,32 @@
  *= require_tree .
  *= require_self
  *= require bootstrap.min
+ *= require rails_bootstrap_forms
  */
+
+.navbar .divider-vertical {
+  height: 50px;
+  margin: 0px;
+  border-left: 1px solid #f2f2f2;
+  border-right: 1px solid #ffffff;
+}
+
+.navbar-inverse .divider-vertical {
+border-right-color: #222222;
+border-left-color: #111111;
+}
+
+@media (max-width: 767px) {
+.navbar-collapse .nav > .divider-vertical {
+    display: none;
+  }
+}
+
+
+.navbar.center .navbar-inner {
+    text-align: center;
+}
+.navbar.center .navbar-inner .nav {
+    float: none;
+    display:inline-block;
+}

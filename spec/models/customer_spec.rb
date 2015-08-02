@@ -1,7 +1,7 @@
 require_relative '../rails_helper'
 
 describe Customer, type: :model do
-  # subject { create :customer }
+  subject { create :customer }
   # it "is invalid without email and name" do
   #   expect(build(:customer, email: nil, encrypted_password: nil, first_name: nil)).not_to be_valid
   # end

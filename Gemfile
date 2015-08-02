@@ -42,6 +42,7 @@ gem 'pry'
 gem 'twitter-bootstrap-rails'
 gem 'haml'
 gem 'haml-rails', '~> 0.9'
+gem 'bootstrap_form'
 
 gem 'devise'
 gem 'omniauth-facebook'
@@ -60,4 +61,7 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'codeclimate-test-reporter'
+  gem 'capybara'
+  gem 'rspec-activemodel-mocks'
+
 end

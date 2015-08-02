@@ -29,8 +29,15 @@ GEM
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.10)
+    bootstrap_form (2.3.0)
     builder (3.2.2)
     cancancan (1.12.0)
+    capybara (2.4.4)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
     codeclimate-test-reporter (0.4.7)
       simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.0)
@@ -168,6 +175,10 @@ GEM
     remotipart (1.2.1)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
+    rspec-activemodel-mocks (1.0.1)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      rspec-mocks (>= 2.99, < 4.0)
     rspec-core (3.3.2)
       rspec-support (~> 3.3.0)
     rspec-expectations (3.3.1)
@@ -234,12 +245,16 @@ GEM
       json (>= 1.8.0)
     warden (1.2.3)
       rack (>= 1.0)
+    xpath (2.0.0)
+      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap_form
   cancancan (~> 1.10)
+  capybara
   codeclimate-test-reporter
   coffee-rails (~> 4.0.0)
   database_cleaner
@@ -255,6 +270,7 @@ DEPENDENCIES
   rails (= 4.1.8)
   rails-i18n (~> 4.0.0)
   rails_admin (~> 0.6.8)
+  rspec-activemodel-mocks
   rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
