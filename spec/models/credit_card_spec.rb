@@ -12,7 +12,7 @@ describe CreditCard, type: :model do
   it {expect(subject).to validate_presence_of :last_name}
 
   # associations
-  it {expect(subject).to belong_to :customer}
+  it {expect(subject).to belong_to :user}
   it {expect(subject).to have_many :orders}
 
 end 

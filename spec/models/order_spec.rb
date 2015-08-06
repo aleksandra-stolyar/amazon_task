@@ -8,7 +8,7 @@ describe Order, type: :model do
   it {expect(subject).to validate_presence_of :completed_date}
 
   # associations
-  it {expect(subject).to belong_to :customer}
+  it {expect(subject).to belong_to :user}
   it {expect(subject).to belong_to :credit_card}
 
   describe "#{total_price}" do

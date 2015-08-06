@@ -3,7 +3,7 @@ class Order < ActiveRecord::Base
 
   validates :total_price, :completed_date, :status, presence: true
 
-  belongs_to :customer
+  belongs_to :user
   belongs_to :credit_card
 
   has_many   :order_items

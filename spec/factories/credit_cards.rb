@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :credit_card do
-    association :customer, factory: :customer
+    association :user, factory: :user
 
     number { Faker::Business.credit_card_number }
     cvv { Faker::Number.number(3) }

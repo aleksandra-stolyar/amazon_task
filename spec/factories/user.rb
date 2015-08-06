@@ -1,7 +1,7 @@
 FactoryGirl.define do
-  factory :customer do
-    # factory :confirmed_customer, :parent => :customer do
-    #   after(:create) { |customer| customer.confirm! }
+  factory :user do
+    # factory :confirmed_user, :parent => :user do
+    #   after(:create) { |user| user.confirm! }
     # end
     email {  Faker::Internet.email}
     password "password"

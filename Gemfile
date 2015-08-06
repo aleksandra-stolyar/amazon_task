@@ -49,6 +49,9 @@ gem 'omniauth-facebook'
 gem 'rails_admin', '~> 0.6.8'
 gem 'cancancan', '~> 1.10'
 
+gem 'carrierwave'
+gem "mini_magick"
+
 gem 'rails-i18n', '~> 4.0.0'
 
 group :development, :test do

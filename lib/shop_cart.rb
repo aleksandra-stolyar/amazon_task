@@ -14,7 +14,7 @@ class ShopCart
   end
 
   def build_order
-    order = customer.orders.build
+    order = user.orders.build
     items.to_a.each do |order_item|
       order_item.first.each do |key, value|
         order.order_items << OrderItem.create do |oi|
