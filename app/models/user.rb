@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
 
   before_create :set_default_role
+  after_create :add_admin_role
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -31,12 +32,22 @@ class User < ActiveRecord::Base
   end
 
   def role?(role) 
-    !roles.find_by_name(role.to_s.camelize).nil?
+    !roles.find_by_name(role.to_s).nil?
   end 
+
+  def has_role?(name)
+    self.roles.where(name: name).length > 0
+  end
 
   private
   def set_default_role
     self.roles << Role.find_by_name('customer')
+  end
+
+  def add_admin_role
+    if self.roles > 2
+      self.roles.first.delete
+    end
   end
 
 end

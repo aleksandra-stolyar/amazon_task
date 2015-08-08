@@ -21,3 +21,9 @@
 
 en:
   hello: "Hello world"
+  admin:
+    actions:
+      approve_review:
+        menu: "Approve"
+      cancel_review:
+        menu: "Cancel"

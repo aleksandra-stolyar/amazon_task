@@ -10,9 +10,10 @@
         Bookmarket
     .collapse.navbar-collapse
       %ul.nav.navbar-nav
+        / ЗДЕСЬ РАЗБИВАЕТ НОРМАЛЬНО НА РОЛИ!!!!!
         / - if can? :access, :rails_admin
-        / %li.active
-        /   =link_to "DASHBOARD", dashboard_path
+        %li.active
+          =link_to "DASHBOARD", dashboard_path
         / - else
         %li.active
           %a{:href => "#"} HOME
@@ -24,12 +25,12 @@
             %span.fa.fa-1x.fa-shopping-cart
             CART :
       %ul.nav.navbar-nav.navbar-right  
-        - if current_user 
-          %li
-            =link_to "Sign out", destroy_user_session_path
-        - elsif
-          %li
-            =link_to "Sign in", new_user_session_path 
-          %li.divider-vertical  
-          %li
-            =link_to "Sign up", new_user_registration_path 
+        / - if current_user 
+        %li
+          =link_to "Sign out", destroy_user_session_path
+        / - elsif
+        %li
+          =link_to "Sign in", new_user_session_path 
+        %li.divider-vertical  
+        %li
+          =link_to "Sign up", new_user_registration_path 

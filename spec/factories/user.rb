@@ -7,5 +7,6 @@ FactoryGirl.define do
     password "password"
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
+    roles 'admin'
   end  
 end

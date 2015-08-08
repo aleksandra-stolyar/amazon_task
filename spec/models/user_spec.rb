@@ -15,5 +15,16 @@ describe User, type: :model do
   # associations  
   it {expect(subject).to have_many :orders}
   it {expect(subject).to have_many :ratings}
+
+  describe "abilities" do
+    subject(:ability){ Ability.new(user) }
+    let(:user){ nil }
+
+    context "access dashboard" do
+      let(:user){ Factory(:accounts_manager) }
+
+      it{ should be_able_to(:manage, Account.new) }
+    end
+  end
     
 end

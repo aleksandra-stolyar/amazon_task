@@ -1,12 +1,15 @@
+require Rails.root.join('lib', 'rails_admin_approve_review.rb') 
+require Rails.root.join('lib', 'rails_admin_cancel_review.rb') 
+
 RailsAdmin.config do |config|
 
   ### Popular gems integration
 
   ## == Devise ==
   # config.authenticate_with do
-  #   warden.authenticate! scope: :admin
+  #   warden.authenticate! scope: :user
   # end
-  # config.current_user_method(&:current_admin)
+  # config.current_user_method(&:current_user)
 
   ## == Cancan ==
   config.authorize_with :cancan
@@ -27,8 +30,12 @@ RailsAdmin.config do |config|
     delete
     show_in_app
 
+    approve_review
+    cancel_review
+  end
     ## With an audit adapter, you can add:
     # history_index
     # history_show
-  end
+
+  
 end
