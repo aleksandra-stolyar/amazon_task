@@ -7,5 +7,12 @@ class Rating < ActiveRecord::Base
   belongs_to :user
   belongs_to :book
 
+  before_create :set_state
+
+  private
+
+  def set_state
+    self.pending! if self.state.blank?
+  end
 
 end
