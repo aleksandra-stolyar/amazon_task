@@ -6,6 +6,6 @@ class Book < ActiveRecord::Base
 
   has_many :ratings
 
-  # mount_uploader :asset, CoverUploader
+  mount_uploader :cover, CoverUploader
   
 end

@@ -7,12 +7,16 @@ class Rating < ActiveRecord::Base
   belongs_to :user
   belongs_to :book
 
-  before_create :set_state
+  after_initialize :set_state_pending
 
-  private
+  def state_enum
+    [['Pending', 1],['Approved', 2],['Canceled', 3]]
+  end
 
-  def set_state
-    self.pending! if self.state.blank?
-  end
+  private
+
+  def set_state_pending
+    self.state ||= :pending #if self.state.blank?
+  end
 
 end

@@ -6,13 +6,11 @@ class User < ActiveRecord::Base
   validates :email, :password, presence: true
   validates :email, uniqueness: true
 
-
   has_many :orders
   has_many :ratings
   has_and_belongs_to_many :roles
 
   before_create :set_default_role
-  after_create :add_admin_role
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -31,23 +29,12 @@ class User < ActiveRecord::Base
     end
   end
 
-  def role?(role) 
-    !roles.find_by_name(role.to_s).nil?
-  end 
-
-  def has_role?(name)
-    self.roles.where(name: name).length > 0
+  def role?(role_sym)
+    roles.any? { |r| r.name.underscore.to_sym == role_sym }
   end
 
   private
   def set_default_role
     self.roles << Role.find_by_name('customer')
   end
-
-  def add_admin_role
-    if self.roles > 2
-      self.roles.first.delete
-    end
-  end
-
 end

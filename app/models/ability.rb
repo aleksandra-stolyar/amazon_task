@@ -4,35 +4,39 @@ class Ability
   def initialize(user)
     user ||= User.new                          # guest user 
     
+    # binding.pry
+
     alias_action :create, :read, :update, :destroy, :to => :crud
       # FOR ROLES
       # -----------------------------
-      # if user.has_role?('admin')
-      #   # binding.pry
-      #   # can :manage, :all
-      #   can :access, :rails_admin # needed to access RailsAdmin
-      #   can :access, :dashboard            # dashboard access
-      #   # (crud) books, authors, categories, (read/change state) orders
-      #   # ('in_progress', 'in_delivery', 'delivered', 'in_queue', 'canceled'),
-      #   # (approve/reject) reviews
-      #   can :crud, Book
-      #   can :crud, Author
-      #   can :crud, Category
-      #   can [:read, :update], Order
-      #   can :crud, Rating
-      # elsif user.has_role?('customer')
-      #   can :read, :all 
-      # else
-      #   can :read, :all           
-      # end
+      if user.role?(:admin)
+        
+        # can :manage, :all
+        can :access, :rails_admin # needed to access RailsAdmin
+        can :access, :dashboard            # dashboard access
+
+        can :dashboard
+        # (crud) books, authors, categories, (read/change state) orders
+        # ('in_progress', 'in_delivery', 'delivered', 'in_queue', 'canceled'),
+        # (approve/reject) reviews
+        can :crud, Book
+        can :crud, Author
+        can :crud, Category
+        can [:read, :update], Order
+        can :crud, Rating
+      elsif user.role?(:customer)
+        can :read, :all 
+      else
+        can :read, :all           
+      end
 
       # ------------------------
       # MANAGES ALL
-      if user
-          can :manage, :all
-          can :access, :rails_admin
-          can :dashboard
-      end
+      # if user
+      #     can :manage, :all
+      #     can :access, :rails_admin
+      #     can :dashboard
+      # end
   end
 
     #

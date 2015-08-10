@@ -9,9 +9,8 @@ module RailsAdmin
         RailsAdmin::Config::Actions.register(self)
 
         register_instance_option :visible? do
-          # binding.pry
-          # authorized? && bindings[:object].pending?
-          bindings[:object].pending?
+          authorized? && bindings[:object].pending?
+          # bindings[:object].pending?
         end
 
         register_instance_option :member do
@@ -25,8 +24,7 @@ module RailsAdmin
         register_instance_option :controller do
           Proc.new do
             @object.approved!
-            flash[:notice] = "You have approved the review titled: #{@object.title}."
-            binding.pry
+            flash[:notice] = "You have approved the review##{@object.id}"
             redirect_to back_or_index
           end
         end
