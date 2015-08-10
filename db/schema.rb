@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150809135758) do
+ActiveRecord::Schema.define(version: 20150810112200) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "addresses", force: true do |t|
     t.string   "address"
@@ -34,14 +37,18 @@ ActiveRecord::Schema.define(version: 20150809135758) do
 
   create_table "books", force: true do |t|
     t.string   "title"
-    t.string   "description"
+    t.text     "description"
     t.integer  "price"
     t.integer  "amount"
     t.integer  "author_id"
-    t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "cover"
+  end
+
+  create_table "books_categories", id: false, force: true do |t|
+    t.integer "book_id"
+    t.integer "category_id"
   end
 
   create_table "categories", force: true do |t|
@@ -94,7 +101,7 @@ ActiveRecord::Schema.define(version: 20150809135758) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "state"
+    t.integer  "state",       default: 0
   end
 
   create_table "roles", force: true do |t|
@@ -131,8 +138,8 @@ ActiveRecord::Schema.define(version: 20150809135758) do
     t.string   "uid"
   end
 
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
