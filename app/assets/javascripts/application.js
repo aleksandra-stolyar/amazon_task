@@ -18,10 +18,9 @@
 
 $(function() {
   $('.book-rating').click(function() {
-    var star = $(this);
     var stars = $(this).attr('data-stars');
 
-    for(i=1; i<=10; i++) {
+    for(var i=1; i<=10; i++) {
       if (i<= stars) {
         $('#' +  i).removeClass("glyphicon-star-empty").addClass("glyphicon-star");
       } else {
