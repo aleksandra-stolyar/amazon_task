@@ -33,6 +33,11 @@ class User < ActiveRecord::Base
     roles.any? { |r| r.name.underscore.to_sym == role_sym }
   end
 
+  def full_name
+    first_name + " " + last_name 
+  end
+
+
   private
   def set_default_role
     self.roles << Role.find_by_name('customer')

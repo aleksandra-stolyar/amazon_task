@@ -3,19 +3,11 @@ class BooksController < ApplicationController
   # load_and_authorize_resource
    # authorize_resource class: false
   def index
-    @books = Book.all
+    @books = Book.all.order(:title).page(params[:page]).per(6)
   end
 
-  def new
-    @book = Book.new
+  def show
+    @book = Book.find(params[:id])
   end
-
-  def create
-    @book = Book.new(book_params)
-  end
-
-  def book_params
-    params.require(:book).permit(:title, :price, :amount)
-  end  
 
 end

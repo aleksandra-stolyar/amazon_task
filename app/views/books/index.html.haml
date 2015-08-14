@@ -1,0 +1,27 @@
+.section
+  .container
+    .row
+      .col-md-8.col-md-offset-2
+      - @books.each do |book|
+        .col-md-4
+          .thumbnail 
+            =link_to book_path(book) do
+              =image_tag book.cover.thumb
+            .caption
+              .pull-right.price= number_to_currency book.price
+              %h5= link_to book.title, book_path(book.id), {style: "display:block; width:200px"}
+              %p.multiline-ellipsis
+                =book.description
+            .ratings
+              %p.pull-right 
+                =book.ratings.count
+                reviews
+              %p
+                -(book.count_average_rate).times do
+                  %span.glyphicon.glyphicon-star
+                -(10 - book.count_average_rate).times do
+                  %span.glyphicon.glyphicon-star-empty
+.section
+  .row
+    %center
+      =paginate @books, window: 2

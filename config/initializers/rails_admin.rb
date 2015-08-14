@@ -36,6 +36,9 @@ RailsAdmin.config do |config|
 
 
   config.model 'Author' do
+    object_label_method do
+      :full_name
+    end
     list do
       exclude_fields :created_at, :updated_at
     end
@@ -45,15 +48,15 @@ RailsAdmin.config do |config|
     list do
       exclude_fields :created_at, :updated_at
     end
-
-    edit do
-      group :default do
-        field :ratings do
-          hide
-        end
-      end
-      include_all_fields
-    end
+# !!!!!!ВЕРНУТЬ ПОСЛЕ РЕЙТИНГОВ!!!!!!!!!!!
+    # edit do
+    #   group :default do
+    #     field :ratings do
+    #       hide
+    #     end
+    #   end
+    #   include_all_fields
+    # end
   end
 
   config.model 'Category' do
@@ -69,6 +72,9 @@ RailsAdmin.config do |config|
     edit do
       group :default do
         field :state do
+          hide
+        end
+        field :text_review do
           hide
         end
       end

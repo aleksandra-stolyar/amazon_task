@@ -42,7 +42,10 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 gem 'pry'
 
-gem 'twitter-bootstrap-rails'
+# gem 'twitter-bootstrap-rails'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+gem 'font-awesome-sass'
 gem 'haml'
 gem 'haml-rails', '~> 0.9'
 gem 'bootstrap_form'
@@ -56,6 +59,8 @@ gem 'aasm', '~> 4.2.0'
 
 gem 'carrierwave'
 gem "mini_magick"
+
+gem 'kaminari'
 
 gem 'rails-i18n', '~> 4.0.0'
 

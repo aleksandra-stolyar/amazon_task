@@ -29,7 +29,12 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+    autoprefixer-rails (5.2.1.2)
+      execjs
+      json
     bcrypt (3.1.10)
+    bootstrap-sass (3.2.0.2)
+      sass (~> 3.2)
     bootstrap_form (2.3.0)
     builder (3.2.2)
     cancancan (1.12.0)
@@ -55,7 +60,7 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     database_cleaner (1.4.1)
-    devise (3.5.1)
+    devise (3.5.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
@@ -77,7 +82,9 @@ GEM
       multipart-post (>= 1.2, < 3)
     font-awesome-rails (4.4.0.0)
       railties (>= 3.2, < 5.0)
-    haml (4.0.6)
+    font-awesome-sass (4.3.2.1)
+      sass (~> 3.2)
+    haml (4.0.7)
       tilt
     haml-rails (0.9.0)
       actionpack (>= 4.0.1)
@@ -134,7 +141,7 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
-    pg (0.18.1)
+    pg (0.18.2)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -240,11 +247,6 @@ GEM
     tilt (1.4.1)
     turbolinks (2.5.3)
       coffee-rails
-    twitter-bootstrap-rails (3.2.0)
-      actionpack (~> 4.1)
-      execjs (~> 2.2)
-      rails (~> 4.1)
-      railties (~> 4.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.7.1)
@@ -260,6 +262,8 @@ PLATFORMS
 
 DEPENDENCIES
   aasm (~> 4.2.0)
+  autoprefixer-rails
+  bootstrap-sass (~> 3.2.0)
   bootstrap_form
   cancancan (~> 1.10)
   capybara
@@ -270,10 +274,12 @@ DEPENDENCIES
   devise
   factory_girl_rails
   faker
+  font-awesome-sass
   haml
   haml-rails (~> 0.9)
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   mini_magick
   omniauth-facebook
   pg
@@ -288,5 +294,4 @@ DEPENDENCIES
   shoulda-matchers
   spring
   turbolinks
-  twitter-bootstrap-rails
   uglifier (>= 1.3.0)

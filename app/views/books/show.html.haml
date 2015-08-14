@@ -1,0 +1,43 @@
+.container
+  .row.show-book
+    .col-md-12
+      %h3
+        =@book.title
+      %small
+        Author:
+        =@book.author.full_name
+      %p.ratings
+        -(@book.count_average_rate).times do
+          %span.glyphicon.glyphicon-star
+        -(10 - @book.count_average_rate).times do
+          %span.glyphicon.glyphicon-star-empty
+  
+  .row  
+    %br
+    .col-md-4
+      =image_tag @book.cover
+    .col-md-8
+      .col-md-6.price.pull-left
+        = number_to_currency @book.price
+      .col-md-6
+        .pull-right
+          %form.form-inline
+            %input.form-control{:id => "quantity", :value => "1", :type => "text", :style => "width: 55px"}
+            %button.btn.btn-success{:type => "submit"} Add to cart
+      .col-md-12  
+        %hr
+      .col-md-12
+        %p
+          =@book.description  
+  %hr
+.container
+  .row
+    .col-md-12
+      %ul.list-inline.review-header
+        %li.title Reviews:
+        %li.link= link_to "Add review to this book", new_book_rating_path(@book.id)
+  %br
+  -unless @book.ratings.empty?
+    =render partial: 'ratings/rating', locals: {ratings: @book.ratings}
+  -else
+    %p No reviews yet  

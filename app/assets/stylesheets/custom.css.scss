@@ -1,0 +1,245 @@
+@import "bootstrap-sprockets";
+
+@import "bootstrap";
+/* цвет фона и рамки навигационного меню */
+.navbar-default {
+    background-color: #ffffff;
+    border-color: #d35400;
+}
+/* цвет текста, содержащий название сайта или бренда */
+/*.navbar-default .navbar-brand {
+    color: #ecf0f1;
+}
+*//* цвет текста (название сайта или бренда), при поднесении к нему курсора мышки или при его нахождении в фокусе */
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #d35400;
+}
+/* Цвет пунктов навигационного меню */
+/*.navbar-default .navbar-nav > li > a {
+    color: #ecf0f1;
+}
+*//* Цвет пункта меню, при поднесении к нему курсора мышки или при его нахождении в фокусе */
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #d35400;
+}
+/* Цвет и фон активного пункта меню, а также поднесении к нему курсора мышки или при его нахождении в фокусе */
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:hover, 
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #ffffff;
+    background-color: #d35400;
+}
+/* Цвет и фон открытого пункта меню, а также поднесении к нему курсора мышки или при его нахождении в фокусе */
+.navbar-default .navbar-nav > .open > a, 
+.navbar-default .navbar-nav > .open > a:hover, 
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #ffffff;
+    background-color: #ffe6d1;
+}
+/* Цвет стрелочки (треугольничка) у раскрывающихся пунктов меню */
+.navbar-default .navbar-nav > .dropdown > a .caret {
+    border-top-color: #ecf0f1;
+    border-bottom-color: #ecf0f1;
+}
+/* Цвет стрелочки (треугольничка) при поднесении к нему курсора мышки или при его нахождении в фокусе */
+.navbar-default .navbar-nav > .dropdown > a:hover .caret,
+.navbar-default .navbar-nav > .dropdown > a:focus .caret {
+    border-top-color: #ffe6d1;
+    border-bottom-color: #ffe6d1;
+}
+/* Цвет стрелочки (треугольничка), открывшегося пункта меню */
+.navbar-default .navbar-nav > .open > a .caret, 
+.navbar-default .navbar-nav > .open > a:hover .caret, 
+.navbar-default .navbar-nav > .open > a:focus .caret {
+    border-top-color: #ffe6d1;
+    border-bottom-color: #ffe6d1;
+}
+/* CSS стили для мобильных устройств */
+/* Цвет рамки у кнопки, которая открывает меню */
+.navbar-default .navbar-toggle {
+    border-color: #d35400;
+}
+/* Цвет фона кнопки (которая открывает меню) при поднесении к ней курсора мышки или при нахождении её в фокусе */
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: #d35400;
+}
+/* Цвет полосочек в кнопочке, которая открывает меню */
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #ecf0f1;
+}
+/* Цвет пунктов меню в раскрывающихся списках */
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #ecf0f1;
+  }
+/* Цвет и фон пункта меню в раскрывающихся списках, при поднесении к нему курсора мышки или при нахождении его в фокусе */
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #ffe6d1;
+        background-color: #d35400;
+    }
+}
+
+.navbar .divider-vertical {
+  height: 50px;
+  margin: 0px;
+  border-left: 1px solid #f2f2f2;
+  border-right: 1px solid #ffffff;
+}
+
+.navbar-inverse .divider-vertical {
+border-right-color: #222222;
+border-left-color: #111111;
+}
+
+@media (max-width: 767px) {
+.navbar-collapse .nav > .divider-vertical {
+    display: none;
+  }
+}
+
+.book-border {
+    border-color: #d35400;
+}
+
+/*product*/
+.caption {
+    height: 130px;
+    overflow: hidden;
+}
+
+.caption h4 {
+    white-space: nowrap;
+}
+
+.ratings {
+  color: #d17581;
+}
+
+.thumbnail {
+  padding: 0;
+}
+
+.thumbnail .caption-full {
+  padding: 9px;
+  color: #333;
+}
+
+.thumbnail .caption {
+  padding: 9px;
+  color: #333;
+}
+
+.thumbnail .price {
+  color: #d17581;
+  font-weight: normal;
+  font-size: 14px;
+  padding-top: 10px;
+}
+
+.thumbnail .ratings {
+  padding-right: 10px;
+  padding-left: 10px;
+  color: #d17581;
+}
+
+.description {
+  color: #777777;
+}
+
+/*multiple truncation*/
+.multiline-ellipsis {
+  display: block;
+  display: -webkit-box;
+  max-width: 400px;
+  height: 4em;
+  margin: 0 auto;
+  line-height: 1.4;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/*----------------------------------------*/
+/*for book#show*/
+
+/*divider line*/
+hr {
+  display: block; 
+  height: 1px;
+  border: 0; 
+  border-top: 1px solid #d35400;
+  margin: 1em 0; 
+  padding: 0;
+}
+
+.price {
+  color: #d17581;
+  font-size: 20px;
+  font-weight: normal;
+  padding-top: 5px;
+}
+
+.show-book {
+  color: #777777;
+  font-weight: normal;
+}
+.show-book h3 {
+  color: #333333;
+  font-weight: normal;
+}
+
+/*review*/
+
+.review {
+  color: #333333;
+  font-weight: normal;
+}
+
+.review .title {
+  font-size: 16px;
+}
+
+.review .date {
+  color: #777777;
+  font-size: 12px;
+}
+
+.review small {
+  color: #777777;
+}
+
+.review-header .title {
+  font-size: 24px;
+  font-weight: normal;
+}
+
+.review-header .link {
+  text-decoration: underline;
+}
+
+.new-review small {
+  color: #777777;
+}
+
+.new-review-header {
+  font-size: 22px;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+}
+
+.new-review-header .title {
+  font-weight: normal;
+}
+
+.new-review-header .link {
+  text-decoration: underline;
+  font-size: 20px;
+}
+
+@import "font-awesome-sprockets";
+@import "font-awesome"; 

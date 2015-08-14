@@ -23,20 +23,15 @@ class Ability
         can :crud, Author
         can :crud, Category
         can [:read, :update], Order
-        can :crud, Rating
+        can :read, Rating
+        can :update, Rating
       elsif user.role?(:customer)
-        can :read, :all 
+        can :read, :all
+        can :create, Rating
+        can :update, Rating 
       else
         can :read, :all           
       end
-
-      # ------------------------
-      # MANAGES ALL
-      # if user
-      #     can :manage, :all
-      #     can :access, :rails_admin
-      #     can :dashboard
-      # end
   end
 
     #

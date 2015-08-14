@@ -1,2 +1,6 @@
+<a href="https://codeclimate.com/github/aleksandra-stolyar/amazon_task"><img src="https://codeclimate.com/github/aleksandra-stolyar/amazon_task/badges/gpa.svg" /></a>
+
+<a href="https://codeclimate.com/github/aleksandra-stolyar/amazon_task/coverage"><img src="https://codeclimate.com/github/aleksandra-stolyar/amazon_task/badges/coverage.svg" /></a>
+
 == README
 

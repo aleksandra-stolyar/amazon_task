@@ -11,11 +11,14 @@ Rails.application.routes.draw do
 
   resources :shop_cart, only: [:index]
   resources :orders, only: [:index]
-  resources :books, only: [:index, :show]
+  resources :books, only: [:index, :show] do
+    resources :ratings, only: [:new, :create]
+  end
   #TODO: How to make this more pretty?
   post 'shop_cart/add_item' => 'shop_cart#add_item', as: :shop_cart_add_item
   post 'shop_cart/build_order' => 'shop_cart#build_order', as: :shop_cart_build_order
   get 'dashboard' => 'rails_admin/main#dashboard', as: :dashboard
+  get '/search' => 'searches#query', as: :search
 
   
   # Example of regular route:

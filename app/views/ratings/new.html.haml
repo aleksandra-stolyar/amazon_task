@@ -1,0 +1,19 @@
+.container
+  .row
+    .col-md-12
+      %ul.list-inline.new-review-header
+        %li.title New review for
+        %li.link=link_to @book.title, book_path(@book.id)
+  %br
+  .row
+    .col-md-8
+      %ul.list-inline
+        %li Rating:
+        -(1..10).each do |i|
+          %li.ratings.glyphicon.glyphicon-star-empty.book-rating{"data-stars" => "#{i}", :id => "#{i}"}
+      = bootstrap_form_for [@book, @book.ratings.build], url: book_ratings_path do |f|
+        = f.text_area :text_review, placeholder: "Your review...", skip_label: true, autofocus: true, size: "30x7"
+        = f.hidden_field :rate, :id => "stars-form"
+        = f.hidden_field :user_id, :value => @current_user.id
+        = f.submit "Add review", class: "btn btn-success"
+        = f.submit "Cancel", class: "btn btn-danger"

@@ -7,5 +7,13 @@ class Book < ActiveRecord::Base
   has_many :ratings
 
   mount_uploader :cover, CoverUploader
-  
+
+  def count_average_rate
+    if ratings.calculate(:count, :all) != 0
+      ratings.sum(:rate)/ratings.calculate(:count, :all)
+    else
+      0
+    end
+    # binding.pry
+  end
 end

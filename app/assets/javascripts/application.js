@@ -12,6 +12,29 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
+//= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+$(function() {
+  $('.book-rating').click(function() {
+    var star = $(this);
+    var stars = $(this).attr('data-stars');
+
+    for(i=1; i<=10; i++) {
+      if (i<= stars) {
+        $('#' +  i).removeClass("glyphicon-star-empty").addClass("glyphicon-star");
+      } else {
+        $('#' +  i).removeClass("glyphicon-star").addClass("glyphicon-star-empty");        
+      }
+    }
+
+    $("#stars-form").val(stars);
+
+    $.ajax({
+      type: "get",
+      data: $("#stars-form").attr('action'),
+      data: $("#stars-form").serialize()
+    });
+  });
+});

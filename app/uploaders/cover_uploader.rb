@@ -6,6 +6,13 @@ class CoverUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
 
+  process resize_to_limit: [400, 400]
+  process :quality => 100
+
+  version :thumb do
+    process resize_to_limit: [200, 200]
+  end
+
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
@@ -25,12 +32,12 @@ class CoverUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  # process :scale => [200, 300]
+  # process :scale => [150, 200]
   #
   # def scale(width, height)
   #   # do something
   # end
-  process :resize_to_fit => [150, 200]
+  # process :resize_to_fit => [150, 200]
     
   # Create different versions of your uploaded files:
   # version :thumb do

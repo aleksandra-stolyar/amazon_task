@@ -1,36 +1,41 @@
-.navbar.navbar-inverse.navbar-fixed-top
+.navbar.navbar-default.navbar-fixed-top
   .container-fluid
     .navbar-header
       %button.navbar-toggle.collapsed{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.navbar-brand{:href => "#"}
+      %a.navbar-brand{href: "/"}
         %span.fa.fa-book
         Bookmarket
     .collapse.navbar-collapse
-      %ul.nav.navbar-nav
-        / ЗДЕСЬ РАЗБИВАЕТ НОРМАЛЬНО НА РОЛИ!!!!!
+      %ul.nav.navbar-nav.navbar-left
+        %li.divider-vertical
         - if can? :access, :rails_admin
           %li.active
             =link_to "DASHBOARD", dashboard_path
         - else
-          %li.active
-            %a{:href => "#"} HOME
           %li
-            %a{:href => "#about"} SHOP
-          %li.divider-vertical    
+            %a{href: "#about"} SHOP
           %li
-            %a{:href => "#about"}
+            %a{href: "#about"}
               %span.fa.fa-1x.fa-shopping-cart
               CART :
       %ul.nav.navbar-nav.navbar-right  
+        %li
+          %form.navbar-form{ url: search_path, role: "search", method: :get }
+            .form-group{style: "display: inline"}
+              .input-group
+                %input.form-control{placeholder: "Book or author?..", type: "text"}
+                  %span.input-group-addon
+                    %span.glyphicon.glyphicon-search
+        %li.divider-vertical  
         - if current_user 
           %li
             =link_to "Sign out", destroy_user_session_path
-        - elsif
+        - else
           %li
             =link_to "Sign in", new_user_session_path 
-          %li.divider-vertical  
           %li
             =link_to "Sign up", new_user_registration_path 
+      
