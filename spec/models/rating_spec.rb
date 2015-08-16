@@ -1,8 +1,9 @@
 require_relative '../rails_helper'
 
 describe Rating, type: :model do
-  subject { create :rating }
-
+  let(:subject) { create :rating }
+  let(:book) {create :book}
+  let(:user) {create :user}
   # validations
   it {expect(subject).to validate_presence_of :text_review}
   it {expect(subject).to validate_inclusion_of(:rate).in_range(1..10)}

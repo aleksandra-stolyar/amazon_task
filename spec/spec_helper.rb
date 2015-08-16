@@ -58,6 +58,7 @@ RSpec.configure do |config|
   # telling it to execute whatever cleanup strategy we selected beforehand.
   config.before(:each) do
     DatabaseCleaner.start
+    load Rails.root + "db/seeds.rb" 
   end
    
   config.after(:each) do

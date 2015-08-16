@@ -1,7 +1,7 @@
 require_relative '../rails_helper'
 
 describe CreditCard, type: :model do
-  subject { create :credit_card }
+  # subject { create :credit_card }
 
   # validations
   it {expect(subject).to validate_presence_of :number}

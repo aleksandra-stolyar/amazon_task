@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :book do
     association :author, factory: :author
-    association :category, factory: :category
+    categories { |a| [a.association(:category)] }
 
     title { Faker::Lorem.sentence(2, true, 2) }
     description { Faker::Lorem.paragraph(2, false, 4) } 
