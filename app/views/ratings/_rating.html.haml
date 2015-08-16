@@ -1,23 +1,24 @@
 - ratings.each do |rating|
-  .row
-    .col-md-12.review
-      %ul.list-inline
-        %li.ratings
-          -(rating.rate).times do
-            %span.glyphicon.glyphicon-star
-          -(10 - rating.rate).times do
-            %span.glyphicon.glyphicon-star-empty
-        %li.review.title
-          -unless rating.review_title.nil? 
-            =rating.review_title
-        %li.review.date=rating.created_at.strftime("%-d %B, %Y")
-      %small
-        -unless rating.user.nil?
-          by
-          =rating.user.email
-  .row
-    .col-md-12
-      %p
-        =rating.text_review
-  %br 
-  %br      
+  -if rating.approved?
+    .row
+      .col-md-12.review
+        %ul.list-inline
+          %li.ratings
+            -(rating.rate).times do
+              %span.glyphicon.glyphicon-star
+            -(10 - rating.rate).times do
+              %span.glyphicon.glyphicon-star-empty
+          %li.review.title
+            -unless rating.review_title.nil? 
+              =rating.review_title
+          %li.review.date=rating.created_at.strftime("%-d %B, %Y")
+        %small
+          -unless rating.user.nil?
+            by
+            =rating.user.email
+    .row
+      .col-md-12
+        %p
+          =rating.text_review
+    %br 
+    %br      

@@ -16,24 +16,27 @@
 //= require turbolinks
 //= require_tree .
 
-$(function() {
-  $('.book-rating').click(function() {
-    var stars = $(this).attr('data-stars');
+$(document).ready(function() {
 
-    for(var i=1; i<=10; i++) {
-      if (i<= stars) {
-        $('#' +  i).removeClass("glyphicon-star-empty").addClass("glyphicon-star");
-      } else {
-        $('#' +  i).removeClass("glyphicon-star").addClass("glyphicon-star-empty");        
+  $(function() {
+    $('.book-rating').click(function() {
+      var stars = $(this).attr('data-stars');
+
+      for(var i=1; i<=10; i++) {
+        if (i<= stars) {
+          $('#' +  i).removeClass("glyphicon-star-empty").addClass("glyphicon-star");
+        } else {
+          $('#' +  i).removeClass("glyphicon-star").addClass("glyphicon-star-empty");        
+        }
       }
-    }
 
-    $("#stars-form").val(stars);
+      $("#stars-form").val(stars);
 
-    $.ajax({
-      type: "get",
-      data: $("#stars-form").attr('action'),
-      data: $("#stars-form").serialize()
+      $.ajax({
+        type: "get",
+        data: $("#stars-form").attr('action'),
+        data: $("#stars-form").serialize()
+      });
     });
   });
 });
