@@ -4,17 +4,11 @@ class Ability
   def initialize(user)
     user ||= User.new                          # guest user 
     
-    # binding.pry
-
     alias_action :create, :read, :update, :destroy, :to => :crud
-      # FOR ROLES
-      # -----------------------------
+    alias_action :approve_review, :cancel_review, :to => :manage_reviews
       if user.role?(:admin)
-        
         # can :manage, :all
         can :access, :rails_admin # needed to access RailsAdmin
-        can :access, :dashboard            # dashboard access
-
         can :dashboard
         # (crud) books, authors, categories, (read/change state) orders
         # ('in_progress', 'in_delivery', 'delivered', 'in_queue', 'canceled'),
@@ -25,6 +19,7 @@ class Ability
         can [:read, :update], Order
         can :read, Rating
         can :update, Rating
+        can :manage_reviews, Rating
       elsif user.role?(:customer)
         can :read, :all
         can :create, Rating
