@@ -51,6 +51,7 @@ gem 'haml-rails', '~> 0.9'
 gem 'bootstrap_form'
 
 gem 'devise'
+gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'rails_admin', '~> 0.6.8'
 gem 'cancancan', '~> 1.10'

@@ -1,19 +1,16 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks"}
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks"}
 
-  # You can have the root of your site routed with "root"
   root "books#index"
-  # root "rails_admin/main#dashboard"
 
   resources :shop_cart, only: [:index]
   resources :orders, only: [:index]
   resources :books, only: [:index, :show] do
     resources :ratings, only: [:new, :create]
   end
+
   #TODO: How to make this more pretty?
   post 'shop_cart/add_item' => 'shop_cart#add_item', as: :shop_cart_add_item
   post 'shop_cart/build_order' => 'shop_cart#build_order', as: :shop_cart_build_order

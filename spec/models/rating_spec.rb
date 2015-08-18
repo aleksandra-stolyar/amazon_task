@@ -12,4 +12,9 @@ describe Rating, type: :model do
   it {expect(subject).to belong_to :user}
   it {expect(subject).to belong_to :book}  
 
+  # callbacks
+  it "sets pending state when initialized" do
+    rating = Rating.new
+    expect(rating.state).not_to be_nil
+  end
 end 

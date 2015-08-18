@@ -12,12 +12,17 @@ class User < ActiveRecord::Base
 
   before_create :set_default_role
 
+  mount_uploader :avatar, AvatarUploader
+
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
+      user.uid = auth.uid
       user.password = Devise.friendly_token[0,20]
-      user.name = auth.info.name   # assuming the user model has a name
-      user.image = auth.info.image # assuming the user model has an image
+      user.first_name = auth.info.name
+      user.avatar = auth.info.image
+      user.oauth_token = auth.credentials.token
     end
   end
 
@@ -34,9 +39,12 @@ class User < ActiveRecord::Base
   end
 
   def full_name
-    first_name + " " + last_name 
+    unless last_name.nil?
+      (first_name + " " + last_name)
+    else  
+      first_name
+    end  
   end
-
 
   private
   def set_default_role

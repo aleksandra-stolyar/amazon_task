@@ -18,6 +18,7 @@ CodeClimate::TestReporter.start
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
 RSpec.configure do |config|
   config.color = true
   # config.include Devise::TestHelpers, :type => :controller

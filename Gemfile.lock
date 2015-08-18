@@ -281,6 +281,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   mini_magick
+  omniauth
   omniauth-facebook
   pg
   pry
