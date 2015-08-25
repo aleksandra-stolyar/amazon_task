@@ -8,6 +8,13 @@
             =link_to book_path(book) do
               =image_tag book.cover.thumb
             .caption
+              %form.form-inline{ action: order_items_path, method: :post, style: "text-align:center" }
+                = hidden_field_tag :authenticity_token, form_authenticity_token
+                = hidden_field_tag 'order_item[book_id]', book.id
+
+                %input.form-control{id: "quantity", value: "1", type: "text", style: "width: 55px", name: "order_item[quantity]"}
+                %button.btn.btn-success.btn-small{:type => "submit"} Add to Cart  
+
               .pull-right.price= number_to_currency book.price
               %h5= link_to book.title, book_path(book.id), {style: "display:block; width:200px"}
               %p.multiline-ellipsis
@@ -21,6 +28,7 @@
                   %span.glyphicon.glyphicon-star
                 -(10 - book.count_average_rate).times do
                   %span.glyphicon.glyphicon-star-empty
+  
 .section
   .row
     %center

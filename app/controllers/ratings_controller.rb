@@ -1,12 +1,10 @@
 class RatingsController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource :book
   def new
-    @book = Book.find(params[:book_id])
     @rating = @book.ratings.new
   end
 
   def create
-    @book = Book.find(params[:book_id])
     @rating = @book.ratings.create(rating_params)
 
     if @rating.save

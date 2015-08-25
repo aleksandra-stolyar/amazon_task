@@ -3,7 +3,7 @@
     .row
       .col-md-12.text-center
         - if devise_mapping.omniauthable?
-          = link_to user_omniauth_authorize_path(:facebook) do
+          = link_to user_omniauth_authorize_path(:facebook), :id => 'facebook-login' do
             %i.fa.fa-5x.fa-facebook-square
         %br
         %br

@@ -63,6 +63,9 @@ gem "mini_magick"
 
 gem 'kaminari'
 
+gem 'countries'
+gem 'country_select', github: 'stefanpenner/country_select'
+
 gem 'rails-i18n', '~> 4.0.0'
 
 group :development, :test do
@@ -77,5 +80,4 @@ group :test do
   gem 'codeclimate-test-reporter'
   gem 'capybara'
   gem 'rspec-activemodel-mocks'
-
 end

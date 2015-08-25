@@ -1,19 +1,23 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks"}
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", registrations: 'users/registrations'}
 
   root "books#index"
+  
+  resources :addresses
+  resources :billing_addresses, controller: 'addresses', type: 'BillingAddress'
+  resources :shipping_addresses, controller: 'addresses', type: 'ShippingAddress'
 
-  resources :shop_cart, only: [:index]
-  resources :orders, only: [:index]
+  resources :orders, only: [:index, :new, :create, :edit, :update]
   resources :books, only: [:index, :show] do
     resources :ratings, only: [:new, :create]
   end
 
-  #TODO: How to make this more pretty?
-  post 'shop_cart/add_item' => 'shop_cart#add_item', as: :shop_cart_add_item
-  post 'shop_cart/build_order' => 'shop_cart#build_order', as: :shop_cart_build_order
+  resource :cart
+
+  resources :order_items
+
   get 'dashboard' => 'rails_admin/main#dashboard', as: :dashboard
   get '/search' => 'searches#query', as: :search
 

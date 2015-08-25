@@ -13,6 +13,11 @@ class CoverUploader < CarrierWave::Uploader::Base
     process resize_to_limit: [200, 200]
   end
 
+  version :small_thumb, from_version: :thumb do
+    process resize_to_limit: [40, 40]
+  end
+
+
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog

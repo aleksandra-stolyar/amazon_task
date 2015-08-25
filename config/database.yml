@@ -14,7 +14,7 @@ development:
   # database: db/development.sqlite3
   adapter: postgresql
   encoding: unicode
-  database: amazon_task
+  database: amazon_development
   pool: 5
   timeout: 5000
 
@@ -26,7 +26,7 @@ test:
   # database: db/test.sqlite3
   adapter: postgresql
   encoding: unicode
-  database: amazon_task
+  database: amazon_test
   pool: 5
   timeout: 5000
 

@@ -10,7 +10,6 @@ module RailsAdmin
 
         register_instance_option :visible? do
           authorized? && bindings[:object].pending?
-          # bindings[:object].pending?
         end
 
         register_instance_option :member do

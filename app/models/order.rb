@@ -10,8 +10,11 @@ class Order < ActiveRecord::Base
 
   has_many   :order_items
 
-  has_one :billing_address
-  has_one :shipping_address
+  has_one :billing_address, class_name: "Address", as: :addressable
+  has_one :shipping_address, class_name: "Address", as: :addressable
+
+  accepts_nested_attributes_for :billing_address, :shipping_address
+
 
   def count_total_price
     order_items.inject(0) { |sum,item| sum += item.price * item.quantity }
@@ -41,6 +44,4 @@ class Order < ActiveRecord::Base
     end
   end
   
-
-
 end

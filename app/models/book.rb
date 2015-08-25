@@ -14,6 +14,5 @@ class Book < ActiveRecord::Base
     else
       0
     end
-    # binding.pry
   end
 end

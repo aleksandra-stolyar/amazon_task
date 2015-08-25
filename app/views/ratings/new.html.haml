@@ -16,4 +16,5 @@
         = f.hidden_field :rate, :id => "stars-form"
         = f.hidden_field :user_id, :value => @current_user.id
         = f.submit "Add review", class: "btn btn-success"
-        = f.submit "Cancel", class: "btn btn-danger"
+        .button.btn.btn-danger
+          =link_to "Cancel", :back,  {:style=>'color:#FFFFFF; text-decoration:none;'}
