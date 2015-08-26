@@ -62,6 +62,10 @@ class User < ActiveRecord::Base
     end  
   end
 
+  def nickname
+    email[/[^@]+/]
+  end
+
   private
   def set_default_role
     self.roles << Role.find_by_name('customer')

@@ -70,6 +70,7 @@
                     %i (we need your current password to confirm your changes)
                     %br/
                     = f.password_field :current_password, autocomplete: "off"
+              %br
               .row
                 .col-md-6    
                   =f.fields_for :billing_address do |b|
@@ -97,6 +98,7 @@
                       = s.text_field :phone, value: "#{current_user.shipping_address.phone}"
                     .field
                       = s.country_select :country, value: "#{current_user.shipping_address.country}"
+              %br      
               .actions
                 = f.submit "Update" 
         .panel.panel-default
