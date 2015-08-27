@@ -15,6 +15,10 @@ User.create(email: "admin@admin.com", password: "12341234") do |u|
   u.roles << Role.find_by_name('admin')
 end
 
+DeliveryType.create(name: "UPS Ground", price: 5)
+DeliveryType.create(name: "UPS Two Day", price: 10)
+DeliveryType.create(name: "UPS One Day", price: 15)
+
 Book.create(title: "Портрет Дориана Грея", price: 80 , amount: 3)
 Book.create(title: "Убить пересмешника..", price: 90, amount: 4)
 Book.create(title: "Таинственная история Билли Миллигана", price: 90, amount: 5)
