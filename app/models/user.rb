@@ -14,8 +14,8 @@ class User < ActiveRecord::Base
   has_many :ratings
   has_and_belongs_to_many :roles
 
-  has_one :billing_address, class_name: "Address", as: :addressable, dependent: :destroy
-  has_one :shipping_address, class_name: "Address", as: :addressable, dependent: :destroy
+  has_one :billing_address, as: :addressable, dependent: :destroy
+  has_one :shipping_address, as: :addressable, dependent: :destroy
 
   accepts_nested_attributes_for :billing_address, :shipping_address
 

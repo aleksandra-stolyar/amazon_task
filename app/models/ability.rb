@@ -20,9 +20,11 @@ class Ability
       can :read, Rating
       can :update, Rating
       can :manage_reviews, Rating
+      can :crud, DeliveryType
     elsif user.role?(:customer)
       can :read, :all
       can :create, Rating
+      can :crud, User
       can :crud, Cart
       can :crud, OrderItem
       can :crud, Address

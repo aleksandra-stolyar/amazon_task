@@ -1,0 +1,13 @@
+=builder.fields_for entity do |b|
+  .col-md-6    
+    =b.label entity, style: "text-decoration: underline"  
+    .field
+      = b.text_field :address
+    .field
+      = b.text_field :zip_code
+    .field
+      = b.text_field :city
+    .field
+      = b.text_field :phone
+    .field
+      = b.country_select :country
