@@ -1,6 +1,15 @@
 @import "bootstrap-sprockets";
 
 @import "bootstrap";
+
+.form-control, .input-group-addon, .btn, .thumbnail, .dropdown-menu, .panel {
+  border-radius: 0px;
+}
+
+ul .list-group {
+  border-radius: 0px;
+}
+
 /* цвет фона и рамки навигационного меню */
 .navbar-default {
     background-color: #ffffff;
@@ -107,26 +116,23 @@ border-left-color: #111111;
   }
 }
 
-.book-border {
-    border-color: #d35400;
-}
-
 /*product*/
 .caption {
-    height: 150px;
-    overflow: hidden;
+  height: 150px;
+  overflow: hidden;
 }
 
 .caption h4 {
-    white-space: nowrap;
+  white-space: nowrap;
 }
 
 .ratings {
-  color: #d17581;
+  color: #eb5745;
 }
 
 .thumbnail {
   padding: 0;
+  border-color: #ffffff;
 }
 
 .thumbnail .caption-full {
@@ -139,17 +145,34 @@ border-left-color: #111111;
   color: #333;
 }
 
-.thumbnail .price {
-  color: #d17581;
+/*.thumbnail .cover {
+  background-color: #eb5745;
+}
+
+*/.thumbnail .price {
+  color: #eb5745;
   font-weight: normal;
   font-size: 14px;
   padding-top: 10px;
 }
 
+.thumbnail .book-title {
+  color: #555555;
+  text-decoration: underline;
+}
+
+.thumbnail .book-title:hover, .book-title:focus {
+  color: #eb5745;
+}
+
+.thumbnail .base {
+  color: #777777;
+}
+
 .thumbnail .ratings {
   padding-right: 10px;
   padding-left: 10px;
-  color: #d17581;
+  color: #eb5745;
 }
 
 .description {
@@ -189,7 +212,7 @@ hr {
 }
 
 .price {
-  color: #d17581;
+  color: #eb5745;
   font-size: 20px;
   font-weight: normal;
   padding-top: 5px;
@@ -262,6 +285,22 @@ form.form-inline div.form-group {
 
 .section {
   margin-top: 70px;
+}
+
+.add {
+  background-color: #ffffff;
+  border-color: #d35400;
+  color: #777777;
+}
+
+.add:hover, .add:focus {
+  background-color: #d35400;
+  color: #ffffff;
+}
+
+.alert {
+  border-radius: 0px;
+  width: 800px;
 }
 
 @import "font-awesome-sprockets";

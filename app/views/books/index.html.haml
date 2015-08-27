@@ -2,8 +2,8 @@
   .row
     .col-md-8.col-md-offset-2
     - @books.each do |book|
-      .col-md-4
-        .thumbnail 
+      .col-md-3
+        .thumbnail
           =link_to book_path(book) do
             =image_tag book.cover.thumb
           .caption
@@ -12,14 +12,14 @@
               = hidden_field_tag 'order_item[book_id]', book.id
 
               %input.form-control{id: "quantity", value: "1", type: "text", style: "width: 55px", name: "order_item[quantity]"}
-              %button.btn.btn-success.btn-small{:type => "submit"} Add to Cart  
+              %button.btn.btn-small.add{:type => "submit"} Add to Cart  
 
             .pull-right.price= number_to_currency book.price
-            %h5= link_to book.title, book_path(book.id), {style: "display:block; width:200px"}
-            %p.multiline-ellipsis
+            %h5= link_to book.title, book_path(book.id), {style: "display:block; width:200px", class: "book-title"}
+            %p.multiline-ellipsis.base
               =book.description
           .ratings
-            %p.pull-right 
+            %p.pull-right.base
               =book.ratings.count
               reviews
             %p
