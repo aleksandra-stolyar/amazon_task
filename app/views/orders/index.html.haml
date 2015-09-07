@@ -1,0 +1,41 @@
+.container
+  .row
+    .col-md-12.text-center
+      %table.table.table-condensed
+        %thead
+          %tr
+            %th
+            %th.text-center BOOK
+            %th.text-center PRICE
+            %th.text-center QTY
+            %th.text-center TOTAL
+            %th.text-center
+        %tbody
+          -@orders.each do |order|
+            - order.order_items.each do |item| 
+              %tr
+                %td=image_tag item.book.cover.small_thumb
+                %td{style: "text-align: left"}
+                  %strong=item.book.title
+                  %br
+                  .multiline-ellipsis=item.book.description
+                %td.cart-price=number_to_currency item.book.price
+                %td
+                  %form.form-inline{action: order_item_path(item), method: :post}
+                    = hidden_field_tag :authenticity_token, form_authenticity_token
+                    = hidden_field_tag 'item[book_id]', item.book.id
+                    %input{name: "_method", type: "hidden", value: "put"}
+                    %input.form-control{id: "quantity", value: "#{item.quantity}", type: "text", style: "width: 55px", name: "order_item[quantity]"}
+                    %button.btn.btn-primary{:type => "submit"}
+                      %i.fa.fa-refresh                
+                %td.cart-price=number_to_currency item.price
+                %td
+                  =link_to "", order_item_path(item), :method => "delete", :class => "fa fa-close" 
+                %td
+            %tr
+              %td
+              %td
+              %td
+              %td SUBTOTAL
+              %td.cart-price= number_to_currency current_cart.total_price
+

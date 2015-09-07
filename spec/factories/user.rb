@@ -6,7 +6,5 @@ FactoryGirl.define do
     password "password"
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
-    provider 'facebook'
-    uid '12345'
   end  
 end

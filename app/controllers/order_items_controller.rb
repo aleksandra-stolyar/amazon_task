@@ -3,8 +3,7 @@ class OrderItemsController < ApplicationController
   load_and_authorize_resource :order_item, except: :create
 
   def create
-    @cart = current_cart
-    @order_item = @cart.order_items.build(order_item_params)
+    @order_item = @current_cart.order_items.build(order_item_params)
     if @order_item.save
       redirect_to cart_path, notice: "#{@order_item.book.title} successfully added to cart!"
     else

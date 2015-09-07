@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150827081713) do
+ActiveRecord::Schema.define(version: 20150907133028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 20150827081713) do
     t.integer  "zip_code"
     t.string   "city"
     t.string   "phone"
-    t.integer  "order_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "address_type"
@@ -29,6 +28,8 @@ ActiveRecord::Schema.define(version: 20150827081713) do
     t.string   "addressable_type"
     t.string   "country"
     t.integer  "user_id"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   create_table "authors", force: true do |t|
@@ -66,7 +67,7 @@ ActiveRecord::Schema.define(version: 20150827081713) do
   end
 
   create_table "credit_cards", force: true do |t|
-    t.integer  "number"
+    t.string   "number"
     t.integer  "cvv"
     t.integer  "expiration_month"
     t.integer  "expiration_year"
@@ -75,6 +76,7 @@ ActiveRecord::Schema.define(version: 20150827081713) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "order_id"
   end
 
   create_table "delivery_types", force: true do |t|
@@ -95,11 +97,12 @@ ActiveRecord::Schema.define(version: 20150827081713) do
   create_table "orders", force: true do |t|
     t.float    "total_price"
     t.datetime "completed_date"
-    t.integer  "status",         default: 0
-    t.integer  "credit_card_id"
+    t.integer  "status",           default: 0
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "step",             default: 0
+    t.integer  "delivery_type_id"
   end
 
   create_table "ratings", force: true do |t|

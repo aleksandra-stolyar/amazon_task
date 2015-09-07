@@ -1,5 +1,5 @@
 class Address < ActiveRecord::Base
-  validates :address, :zip_code, :city, :phone, :country, presence: true
+  validates :first_name, :last_name, :address, :zip_code, :city, :phone, :country, presence: true
   
   belongs_to :order
   belongs_to :addressable, polymorphic: true

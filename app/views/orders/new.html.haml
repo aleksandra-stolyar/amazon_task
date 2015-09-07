@@ -1,0 +1,18 @@
+.container
+
+  - url = @order.last_step? ? finish_orders_path : steps_orders_path
+
+  =bootstrap_form_for @order, url: url do |f|
+    =f.error_summary
+    .row
+      =render "#{@order.current_step}_step", f: f
+
+    .row
+      .col-md-6
+        %br
+        = f.submit "GO BACK", :name => "back_button", class: "btn btn-info" unless @order.first_step?
+      .col-md-6.pull-right
+        %br
+        = f.submit "SAVE AND CONTINUE", class: "btn btn-success"
+        
+    

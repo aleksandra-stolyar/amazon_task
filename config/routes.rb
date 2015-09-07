@@ -12,7 +12,12 @@ Rails.application.routes.draw do
   resources :billing_addresses, controller: 'addresses', type: 'BillingAddress'
   resources :shipping_addresses, controller: 'addresses', type: 'ShippingAddress'
 
-  resources :orders
+  resources :orders do
+    collection do
+      post :steps
+      post :finish
+    end
+  end
   resources :books, only: [:index, :show] do
     resources :ratings, only: [:new, :create]
   end

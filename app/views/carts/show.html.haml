@@ -11,7 +11,7 @@
             %th.text-center TOTAL
             %th.text-center
         %tbody
-          - @cart.order_items.each do |item| 
+          - current_cart.order_items.each do |item| 
             %tr
               %td=image_tag item.book.cover.small_thumb
               %td{style: "text-align: left"}
@@ -36,7 +36,7 @@
             %td
             %td
             %td SUBTOTAL
-            %td.cart-price= number_to_currency @cart.total_price
+            %td.cart-price= number_to_currency current_cart.total_price
 
 .container
   .row

@@ -28,6 +28,9 @@ class Ability
       can :crud, Cart
       can :crud, OrderItem
       can :crud, Address
+      can :crud, Order
+      can :steps, Order
+      can :finish, Order
     else
       can :read, :all
       can :crud, Cart

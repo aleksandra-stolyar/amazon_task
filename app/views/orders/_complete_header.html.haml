@@ -1,0 +1,43 @@
+.row
+  .col-md-2
+    %address
+      %strong Shipping Address
+      %br
+      =@order.shipping_address.address
+      %br
+      =@order.shipping_address.city
+      %br
+      =@order.shipping_address.zip_code
+      ,
+      =ISO3166::Country.find_country_by_alpha2(@order.shipping_address.country)
+      %br
+      Phone
+      =@order.shipping_address.phone
+  .col-md-2
+    %address
+      %strong Billing Address
+      %br
+      =@order.billing_address.address
+      %br
+      =@order.billing_address.city
+      %br
+      =@order.billing_address.zip_code
+      ,
+      =ISO3166::Country.find_country_by_alpha2(@order.billing_address.country)
+      %br
+      Phone
+      =@order.billing_address.phone
+
+  .col-md-2
+    %address
+      %strong Shipments
+      %br
+      =@order.delivery_type.name
+  .col-md-2
+    %address
+      %strong Payment Information
+      %br
+      =@order.credit_card.hide_number
+      %br
+      #{@order.credit_card.expiration_month}/#{@order.credit_card.expiration_year}
+

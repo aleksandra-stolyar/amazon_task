@@ -1,15 +1,2 @@
 .container
-  .row
-    .col-md-offset-3.col-md-6
-      .table.table-striped
-        %thead
-          %tr
-            %th Name
-            %th Quantity
-            %th Price
-        %tbody
-          - @order_items.each do |item, i|
-            %tr
-              %td= link_to item.book, item.book
-              %td= item.quantity
-              %td= otem.price
+  = render 'complete_header'

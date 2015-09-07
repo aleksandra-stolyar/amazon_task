@@ -1,0 +1,40 @@
+= render 'complete_header'  
+.row
+  .col-md-12.text-center
+    %table.table.table-condensed
+      %thead
+        %tr
+          %th
+          %th.text-center BOOK
+          %th.text-center PRICE
+          %th.text-center QTY
+          %th.text-center TOTAL
+      %tbody
+        - current_cart.order_items.each do |item| 
+          %tr{style: "border-bottom: 2px solid #808080"}
+            %td=image_tag item.book.cover.small_thumb
+            %td{style: "text-align: left"}
+              %strong=item.book.title
+              %br
+              .multiline-ellipsis=item.book.description
+            %td.cart-price=number_to_currency item.book.price
+            %td=item.quantity
+            %td.cart-price=number_to_currency item.price
+        %tr
+          %td
+          %td
+          %td
+          %td SUBTOTAL:
+          %td.cart-price= number_to_currency count_order_items_price
+        %tr{style: "border-bottom: 2px solid #808080"}
+          %td
+          %td
+          %td          
+          %td SHIPPING:
+          %td.cart-price= number_to_currency count_shipping_price
+        %tr
+          %td
+          %td
+          %td          
+          %td ORDER TOTAL:
+          %td.cart-price= number_to_currency count_order_total_price

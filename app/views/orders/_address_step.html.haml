@@ -1,0 +1,41 @@
+- @order.billing_address = current_user.billing_address.nil? ?  @order.build_billing_address : current_user.billing_address.dup
+- @order.shipping_address = current_user.shipping_address.nil? ?  @order.build_shipping_address : current_user.shipping_address.dup
+
+.col-md-8
+  =f.fields_for :shipping_address do |s|
+    .col-md-6
+      =field_set_tag "Shipping Address" do
+        .field
+          = s.text_field :first_name
+        .field
+          = s.text_field :last_name
+        .field
+          = s.text_field :address
+        .field
+          = s.text_field :zip_code
+        .field
+          = s.text_field :city
+        .field
+          = s.text_field :phone
+        .field
+          = s.country_select :country
+
+  =f.fields_for :billing_address do |b|
+    .col-md-6
+      =field_set_tag "Billing Address" do
+        .field
+          = b.text_field :first_name
+        .field
+          = b.text_field :last_name    
+        .field
+          = b.text_field :address
+        .field
+          = b.text_field :zip_code
+        .field
+          = b.text_field :city
+        .field
+          = b.text_field :phone
+        .field
+          = b.country_select :country
+.col-md-4
+  =render 'order_summary'

@@ -78,6 +78,11 @@
 
                   =render partial: 'address', locals: { builder: f, entity: :shipping_address }
                   =render partial: 'address', locals: { builder: f, entity: :billing_address }
+              %br
+              .row
+                .col-md-12
+                  - resource.build_credit_card unless resource.credit_card                
+                  =render partial: 'credit_card', locals: { builder: f, entity: :credit_card }
               %br      
               .actions
                 = f.submit "Update", class: "btn btn-success"

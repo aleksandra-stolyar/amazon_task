@@ -1,13 +1,17 @@
-=builder.fields_for entity do |b|
+=builder.fields_for entity do |delivery|
   .col-md-6    
-    =b.label entity, style: "text-decoration: underline"  
+    =delivery.label entity, style: "text-decoration: underline"
     .field
-      = b.text_field :address
+      = delivery.text_field :first_name
     .field
-      = b.text_field :zip_code
+      = delivery.text_field :last_name 
     .field
-      = b.text_field :city
+      = delivery.text_field :address
     .field
-      = b.text_field :phone
+      = delivery.text_field :zip_code
     .field
-      = b.country_select :country
+      = delivery.text_field :city
+    .field
+      = delivery.text_field :phone
+    .field
+      = delivery.country_select :country

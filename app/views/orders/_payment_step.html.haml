@@ -1,0 +1,22 @@
+.col-md-8
+  .col-md-4
+    =field_set_tag "CREDIT CARD" do
+      =f.fields_for :credit_card, :class => 'form-horizontal' do |c|
+        .field
+          = c.text_field :first_name
+        .field
+          = c.text_field :last_name 
+        .field
+          = c.text_field :number, skip_label: true, placeholder: "Card Number", maxlength: 19
+        = c.label "Expiration date:"
+        .row
+          .col-md-6
+            .field
+              = c.select :expiration_month, 1..12, skip_label: true
+          .col-md-6  
+            .field
+              = c.select :expiration_year, Date.today.year..(Date.today.year+10), skip_label: true  
+        .field
+          = c.text_field :cvv, maxlength: 3, skip_label: true, placeholder: "Card Code"
+.col-md-4
+  =render 'order_summary'

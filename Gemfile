@@ -66,8 +66,6 @@ gem 'kaminari'
 gem 'countries'
 gem 'country_select', github: 'stefanpenner/country_select'
 
-gem 'rails-i18n', '~> 4.0.0'
-
 group :development, :test do
   gem 'faker'
   gem 'rspec-rails'

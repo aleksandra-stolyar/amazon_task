@@ -11,10 +11,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # binding.pry
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password,
       :password_confirmation,
-      :billing_address_attributes => [:address, :zip_code, :city, :phone, :country], :shipping_address_attributes => [:address, :zip_code, :city, :phone, :country])}
+      :credit_card_attributes => [:number, :cvv, :expiration_month, :expiration_year,
+                                  :first_name, :last_name],
+      :billing_address_attributes => [:first_name, :last_name, :address, :zip_code, :city, :phone, :country],
+      :shipping_address_attributes => [:first_name, :last_name, :address, :zip_code, :city, :phone, :country])
+    }
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :password,
-      :password_confirmation, :first_name, :last_name, 
-      :billing_address_attributes => [:address, :zip_code, :city, :phone, :country], :shipping_address_attributes => [:address, :zip_code, :city, :phone, :country]) }
+      :password_confirmation, :first_name, :last_name,
+      :credit_card_attributes => [:number, :cvv, :expiration_month, :expiration_year,
+                                  :first_name, :last_name],
+      :billing_address_attributes => [:first_name, :last_name, :address, :zip_code, :city, :phone, :country],
+      :shipping_address_attributes => [:first_name, :last_name, :address, :zip_code, :city, :phone, :country])
+    }
   end
 
   protected

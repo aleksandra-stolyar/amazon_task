@@ -1,0 +1,17 @@
+%legend ORDER SUMMARY
+%table
+  %thead
+  %tbody
+    %tr
+      %td ITEM TOTAL
+      %td= number_to_currency count_order_items_price
+    -unless @order.delivery_type.nil?  
+      %tr
+        %td SHIPPING
+        %td= number_to_currency count_shipping_price#CALCULATE SHIPPING when delivery and payment!
+      %tr
+        %td ORDER TOTAL
+        %td= number_to_currency count_order_total_price #add count_total_price when calculated      
+    -else
+      %td ORDER TOTAL
+      %td= number_to_currency count_order_items_price #add count_total_price when calculated      

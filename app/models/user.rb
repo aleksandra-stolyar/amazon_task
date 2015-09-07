@@ -2,28 +2,29 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, 
          :recoverable, :rememberable, :trackable, :validatable, 
          :omniauthable, :omniauth_providers => [:facebook]
-  attr_accessor :password, :password_confirmation, :current_password
+
+  attr_accessor :current_password
+  
+  before_create :set_default_role
 
   validates :email, presence: true
   validates :email, uniqueness: true
 
   validates :password, presence: true, length: {minimum: 5, maximum: 120}, on: :create
   validates :password, length: {minimum: 5, maximum: 120}, on: :update, allow_blank: true
-
-  has_many :orders
-  has_many :ratings
+  
   has_and_belongs_to_many :roles
+  has_many                :orders
+  has_many                :ratings
+  has_one                 :credit_card
+  has_one                 :billing_address, as: :addressable, dependent: :destroy
+  has_one                 :shipping_address, as: :addressable, dependent: :destroy
 
-  has_one :billing_address, as: :addressable, dependent: :destroy
-  has_one :shipping_address, as: :addressable, dependent: :destroy
-
-  accepts_nested_attributes_for :billing_address, :shipping_address
-
-  before_create :set_default_role
+  accepts_nested_attributes_for :credit_card
+  accepts_nested_attributes_for :shipping_address
+  accepts_nested_attributes_for :billing_address
 
   mount_uploader :avatar, AvatarUploader
-
-
 
   def self.from_omniauth(auth)
     if user = User.find_by_email(auth.info.email)
@@ -39,31 +40,25 @@ class User < ActiveRecord::Base
                    :password => Devise.friendly_token[0,20])
     end
   end
-  # --------------------------------------------
-  # add if new provider needed
-  # --------------------------------------------
-  # def self.new_with_session(params, session)
-  #   super.tap do |user|
-  #     if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
-  #       user.email = data["email"] if user.email.blank?
-  #     end
-  #   end
-  # end
 
   def role?(role_sym)
     roles.any? { |r| r.name.underscore.to_sym == role_sym }
   end
 
   def full_name
-    unless last_name.nil?
+    unless first_name.nil? || last_name.nil?
       (first_name + " " + last_name)
-    else  
-      first_name
+    else
+      nil  
     end  
   end
 
   def nickname
     email[/[^@]+/]
+  end
+
+  def set_credit_card
+    self.credit_card || self.build_credit_card
   end
 
   private

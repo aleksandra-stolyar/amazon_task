@@ -1,0 +1,19 @@
+=builder.fields_for entity do |b|
+  .col-md-6    
+    =b.label entity, style: "text-decoration: underline"  
+    .field
+      = b.text_field :first_name
+    .field
+      = b.text_field :last_name 
+    .field
+      = b.text_field :number, skip_label: true, placeholder: "Card Number", maxlength: 19
+    =b.label "Expiration date:"
+    .row
+      .col-md-6
+        .field
+          = b.select :expiration_month, 1..12, skip_label: true
+      .col-md-6  
+        .field
+          = b.select :expiration_year, Date.today.year..(Date.today.year+10), skip_label: true  
+    .field
+      = b.text_field :cvv, maxlength: 3, skip_label: true, placeholder: "Card Code"
