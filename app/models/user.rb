@@ -57,10 +57,6 @@ class User < ActiveRecord::Base
     email[/[^@]+/]
   end
 
-  def set_credit_card
-    self.credit_card || self.build_credit_card
-  end
-
   private
   def set_default_role
     self.roles << Role.find_by_name('customer')

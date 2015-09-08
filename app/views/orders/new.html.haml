@@ -1,12 +1,10 @@
 .container
-
   - url = @order.last_step? ? finish_orders_path : steps_orders_path
 
   =bootstrap_form_for @order, url: url do |f|
     =f.error_summary
     .row
       =render "#{@order.current_step}_step", f: f
-
     .row
       .col-md-6
         %br

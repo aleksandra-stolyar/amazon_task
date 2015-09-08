@@ -42,6 +42,18 @@ class Order < ActiveRecord::Base
     end
   end
 
+  def item_price
+    order_items.to_a.sum {|item| item.price}
+  end
+
+  def delivery_price
+    delivery_type.price
+  end
+
+  def total_price
+    item_price + delivery_price
+  end
+
   def add_order_items_from_cart(cart)
     cart.order_items.each do |item|
       item.cart_id = nil

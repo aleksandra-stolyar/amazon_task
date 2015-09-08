@@ -1,6 +1,3 @@
-- @order.billing_address = current_user.billing_address.nil? ?  @order.build_billing_address : current_user.billing_address.dup
-- @order.shipping_address = current_user.shipping_address.nil? ?  @order.build_shipping_address : current_user.shipping_address.dup
-
 .col-md-8
   =f.fields_for :shipping_address do |s|
     .col-md-6

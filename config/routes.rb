@@ -3,27 +3,23 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", registrations: 'users/registrations'}
   as :user do
-    get 'users/profile', to: 'users/registrations#edit', as: :user_root, param: :nickname # Rails 3
+    get 'users/profile', to: 'users/registrations#edit', as: :user_root, param: :nickname
   end
 
   root "books#index"
   
-  resources :addresses
-  resources :billing_addresses, controller: 'addresses', type: 'BillingAddress'
-  resources :shipping_addresses, controller: 'addresses', type: 'ShippingAddress'
-
   resources :orders do
     collection do
       post :steps
       post :finish
     end
   end
+
   resources :books, only: [:index, :show] do
     resources :ratings, only: [:new, :create]
   end
-
+  
   resource :cart
-
   resources :order_items
 
   get 'dashboard', to: 'rails_admin/main#dashboard', as: :dashboard
