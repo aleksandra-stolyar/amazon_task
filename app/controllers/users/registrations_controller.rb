@@ -8,7 +8,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end 
 
   def configure_permitted_parameters
-    # binding.pry
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password,
       :password_confirmation,
       :credit_card_attributes => [:number, :cvv, :expiration_month, :expiration_year,
