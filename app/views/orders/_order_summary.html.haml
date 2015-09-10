@@ -5,7 +5,7 @@
     %tr
       %td ITEM TOTAL
       %td= number_to_currency count_order_items_price
-    -unless @order.delivery_type.nil?  
+    -unless @order_form.delivery_type.nil?  
       %tr
         %td SHIPPING
         %td= number_to_currency count_shipping_price#CALCULATE SHIPPING when delivery and payment!

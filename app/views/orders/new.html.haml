@@ -1,16 +1,23 @@
 .container
-  - url = @order.last_step? ? finish_orders_path : steps_orders_path
+  / - url = @order_form.last_step? ? finish_orders_path : steps_orders_path
 
-  =bootstrap_form_for @order, url: url do |f|
-    =f.error_summary
+  =bootstrap_form_for @order_form, url: steps_orders_path do |form|
+    - if @order_form.errors.any?
+      #error_explanation
+        %h2
+          = pluralize(@order_form.errors.count, "error")
+          prohibited this post from being saved:
+        %ul
+          - @order_form.errors.full_messages.each do |msg|
+            %li= msg
     .row
-      =render "#{@order.current_step}_step", f: f
+      =render "#{@order_form.current_step}_step", form: form
     .row
       .col-md-6
         %br
-        = f.submit "GO BACK", :name => "back_button", class: "btn btn-info" unless @order.first_step?
+        = form.submit "GO BACK", :name => "back_button", class: "btn btn-info" unless @order_form.first_step?
       .col-md-6.pull-right
         %br
-        = f.submit "SAVE AND CONTINUE", class: "btn btn-success"
+        = form.submit "SAVE AND CONTINUE", class: "btn btn-success"
         
     

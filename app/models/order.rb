@@ -10,13 +10,6 @@ class Order < ActiveRecord::Base
   has_one     :credit_card
   has_one     :billing_address,  as: :addressable
   has_one     :shipping_address, as: :addressable
-  
-  accepts_nested_attributes_for :shipping_address
-  accepts_nested_attributes_for :billing_address
-  accepts_nested_attributes_for :credit_card
-  accepts_nested_attributes_for :delivery_type
-
-  attr_writer :current_step
 
   aasm :column => :status, :enum => true do
     state :in_progress, :initial => true
@@ -52,48 +45,6 @@ class Order < ActiveRecord::Base
 
   def total_price
     item_price + delivery_price
-  end
-
-  def add_order_items_from_cart(cart)
-    cart.order_items.each do |item|
-      item.cart_id = nil
-      order_items << item
-    end
-  end
-
-  def current_step
-    @current_step || steps.first
-  end
-  
-  def steps
-    %w[address delivery payment confirmation]
-  end
-
-  def next_step
-    self.current_step = steps[steps.index(current_step)+1]
-  end
-
-  def previous_step
-    self.current_step = steps[steps.index(current_step)-1]
-  end
-
-  def first_step
-    steps.first
-  end
-
-  def first_step?
-    current_step == steps.first
-  end
-
-  def last_step?
-    current_step == steps.last
-  end
-
-  def all_valid?
-    steps.all? do |step|
-      self.current_step = step
-      valid?
-    end
   end
 
 end

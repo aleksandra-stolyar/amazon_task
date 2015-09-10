@@ -1,5 +1,5 @@
 .col-md-8
-  =f.fields_for :shipping_address do |s|
+  =form.fields_for :shipping_address, @order_form.shipping_address do |s|
     .col-md-6
       =field_set_tag "Shipping Address" do
         .field
@@ -17,7 +17,7 @@
         .field
           = s.country_select :country
 
-  =f.fields_for :billing_address do |b|
+  =form.fields_for :billing_address, @order_form.billing_address do |b|
     .col-md-6
       =field_set_tag "Billing Address" do
         .field

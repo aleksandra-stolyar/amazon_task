@@ -1,7 +1,7 @@
 .col-md-8
   .col-md-4
     =field_set_tag "CREDIT CARD" do
-      =f.fields_for :credit_card, :class => 'form-horizontal' do |c|
+      =form.fields_for :credit_card, @order_form.credit_card, :class => 'form-horizontal' do |c|
         .field
           = c.text_field :first_name
         .field

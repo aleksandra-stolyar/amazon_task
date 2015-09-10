@@ -1,10 +1,10 @@
 class OrdersController < ApplicationController
-  load_and_authorize_resource :through => :current_user
+  # load_and_authorize_resource :through => :current_user, only: [:show, :index]
+  load_resource :through => :current_user# , only: :setup_order
 
-  before_filter :setup_order, only: [:new, :steps, :finish]
   before_filter :check_cart, only: :new
   before_filter :set_session, only: [:steps, :finish]
-
+  before_filter :setup_order, only: [:new, :steps, :finish]
 
   def index
   end
@@ -14,34 +14,32 @@ class OrdersController < ApplicationController
 
   def new
     session[:order_params] ||= {}
-    session[:order_step] = @order.first_step
+    session[:order_step] = @order_form.first_step
     render '/orders/new'
   end
 
   def steps
-    if @order.valid?
+    if @order_form.last_step?
+      finish
+    else
       if params[:back_button]
-        @order.previous_step        
-      else  
-        @order.next_step
+        @order_form.previous_step 
+      elsif @order_form.valid?
+        @order_form.next_step
       end
+
+      session[:order_step] = @order_form.current_step
       render 'new'
-      session[:order_step] = @order.current_step
     end
   end
 
   def finish
-    raise "Can't submit form!" unless @order.last_step?
+    raise "Can't submit form!" unless @order_form.last_step?
+    @order_form.save
 
-    if @order.valid?
-      @order.add_order_items_from_cart(@current_cart)
-      @order.save if @order.all_valid?
-      session[:order_step] = session[:order_params] = nil
-      flash[:notice] = "Order saved."
-      redirect_to @order
-    else
-      render 'new'
-    end
+    session[:order_step] = session[:order_params] = nil
+    flash[:notice] = "Order saved."
+    redirect_to @order_form.order
   end
 
   def check_cart
@@ -51,15 +49,10 @@ class OrdersController < ApplicationController
   end
 
   def setup_order
-    @order = @current_user.orders.new(session[:order_params])
-    @order.credit_card = @current_user.credit_card.nil? ? @order.build_credit_card : @current_user.credit_card.dup
-    @order.billing_address = current_user.billing_address.nil? ?  @order.build_billing_address : current_user.billing_address.dup
-    @order.shipping_address = current_user.shipping_address.nil? ?  @order.build_shipping_address : current_user.shipping_address.dup
+    @order_form = OrderForm.new(current_user.orders.new, session, @current_cart)
   end
 
   def set_session
-    session[:order_params].deep_merge!(params[:order]) if params[:order]
-    @order.current_step = session[:order_step]
+    session[:order_params].deep_merge!(params[:order_form]) if params[:order_form]
   end
-
 end

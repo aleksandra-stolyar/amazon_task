@@ -55,6 +55,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'rails_admin', '~> 0.6.8'
 gem 'cancancan', '~> 1.10'
+gem 'virtus'
 
 gem 'aasm', '~> 4.2.0'
 
