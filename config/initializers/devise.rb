@@ -234,6 +234,8 @@ Devise.setup do |config|
   #   config.omniauth :facebook, "828115950641942", "f79305c9871fc28573c9a53c8bb335d4", scope: 'email', info_fields: 'email, name'
   # else
     config.omniauth :facebook, "815648321888705", "346c88acb3bc948e3cb62f5edf439ccc", scope: 'email', info_fields: 'email, name'
+    # config.omniauth :facebook, "843853469068190", "d6644f1b6c4d7654b30175bca97ac316", scope: 'email', info_fields: 'email, name'
+
   # end
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
