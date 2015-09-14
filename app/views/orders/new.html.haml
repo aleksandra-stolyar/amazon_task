@@ -1,5 +1,4 @@
 .container
-  / - url = @order_form.last_step? ? finish_orders_path : steps_orders_path
 
   =bootstrap_form_for @order_form, url: steps_orders_path do |form|
     - if @order_form.errors.any?
