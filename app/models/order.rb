@@ -2,7 +2,6 @@ class Order < ActiveRecord::Base
   include AASM
 
   enum status: { in_progress: 0, in_queue:1, in_delivery: 2, delivered: 3, canceled: 4 }
-  enum step: { address: 0, delivery:1, payment: 2, confirmation: 3 }
 
   belongs_to  :user
   belongs_to  :delivery_type

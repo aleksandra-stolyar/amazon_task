@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   resources :order_items
 
   get 'dashboard', to: 'rails_admin/main#dashboard', as: :dashboard
-  get '/search', to: 'searches#query', as: :search
+  get '/search', to: 'books#search', as: :search
 
   
   # Example of regular route:

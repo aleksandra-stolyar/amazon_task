@@ -16,11 +16,15 @@ class Ability
       can :crud, Book
       can :crud, Author
       can :crud, Category
-      can [:read, :update], Order
+      can :manage, Order
       can :read, Rating
       can :update, Rating
       can :manage_reviews, Rating
       can :crud, DeliveryType
+      can :read, BillingAddress
+      can :read, ShippingAddress
+      can :read, CreditCard
+      can :read, OrderItem
     elsif user.role?(:customer)
       can :read, :all
       can :create, Rating

@@ -30,8 +30,12 @@ RailsAdmin.config do |config|
     delete
     show_in_app
 
-    approve_review
-    cancel_review
+    approve_review do
+      only ['Rating']
+    end  
+    cancel_review do
+      only ['Rating']
+    end
   end
 
 
@@ -65,8 +69,32 @@ RailsAdmin.config do |config|
     end
   end
 
-  # config.model 'Order' do
-  # end
+  config.model 'Order' do
+    edit do
+      field :status, :enum do
+        default_value 'in_queue'
+        enum do
+          ['in_queue', 'in_delivery', 'delivered', 'canceled']
+        end
+      end
+      include_all_fields
+    end
+    list do
+      exclude_fields :order_items, :credit_card, :billing_address, :shipping_address
+    end
+  end
+  
+  config.model 'BillingAddress' do
+    exclude_fields :addressable, :address_type, :user
+  end
+  
+  config.model 'ShippingAddress' do
+    exclude_fields :addressable, :address_type, :user
+  end
+
+  config.model 'CreditCard' do
+    exclude_fields :cvv
+  end
 
   config.model 'Rating' do
     edit do
@@ -81,6 +109,8 @@ RailsAdmin.config do |config|
       include_all_fields
     end
   end
+
+
 
 
 

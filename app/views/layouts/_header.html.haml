@@ -24,10 +24,10 @@
               =t('front.cart')
       %ul.nav.navbar-nav.navbar-right  
         %li
-          %form.navbar-form{ url: search_path, role: "search", method: :get }
+          %form.navbar-form{ url: books_path, method: :get }
             .form-group{style: "display: inline"}
               .input-group
-                %input.form-control{placeholder: t('front.search'), type: "text"}
+                %input.form-control{id: "search", name: "search", placeholder: t('front.search'), type: "text"}
                   %span.input-group-addon
                     %span.glyphicon.glyphicon-search
         %li.divider-vertical  
