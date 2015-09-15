@@ -232,7 +232,7 @@ Devise.setup do |config|
   # ==> OmniAuth
   config.omniauth :facebook,  
     Rails.application.secrets.facebook_app_id,
-    Rails.application.secrets.facebook_app_secret,
+    Rails.application.secrets.facebook_secret,
     scope: 'email',
     info_fields: 'email, name'
   # Add a new OmniAuth provider. Check the wiki for more information on setting
